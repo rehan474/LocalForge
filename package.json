@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "browser-image-compression": "^2.0.2",
+    "lucide-react": "^1.66.0",
+    "pdf-lib": "^1.17.1"
+  }
+}
