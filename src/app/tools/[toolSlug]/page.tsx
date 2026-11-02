@@ -7,6 +7,9 @@ import SeoArticle from '@/components/shared/SeoArticle';
 import JsonFormatterView from '@/tools/json-formatter/JsonFormatterView';
 import ImageCompressorView from '@/tools/image-compressor/ImageCompressorView';
 import PdfMergerView from '@/tools/pdf-merger/PdfMergerView';
+import JwtDecoderView from '@/tools/jwt-decoder/JwtDecoderView';
+import Base64CodecView from '@/tools/base64-codec/Base64CodecView';
+import CryptoGeneratorView from '@/tools/crypto-generator/CryptoGeneratorView';
 import { ArrowLeft, Cpu } from 'lucide-react';
 
 export async function generateStaticParams() {
@@ -26,6 +29,12 @@ export default async function ToolPage({ params }: { params: Promise<{ toolSlug:
         return <ImageCompressorView />;
       case 'pdf-merger':
         return <PdfMergerView />;
+      case 'jwt-decoder':
+        return <JwtDecoderView />;
+      case 'base64-codec':
+        return <Base64CodecView />;
+      case 'crypto-generator':
+        return <CryptoGeneratorView />;
       default:
         return null;
     }
