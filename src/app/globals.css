@@ -1,18 +1,17 @@
 @import "tailwindcss";
 
 @layer base {
-  html.light, html.light body {
-    background-color: #f1f5f9 !important;
-    color: #0f172a !important;
-  }
-
-  html.dark, html.dark body, html:not(.light) {
+  body {
     background-color: #030712 !important;
     color: #f8fafc !important;
+    background-image: 
+      radial-gradient(at 50% 0%, rgba(99, 102, 241, 0.14) 0px, transparent 55%),
+      radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 100% 100%, 24px 24px;
+    background-attachment: fixed;
   }
 }
 
-/* Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
