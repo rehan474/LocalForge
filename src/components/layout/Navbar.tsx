@@ -5,13 +5,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Hammer, Github, ShieldCheck, Sparkles, Command } from 'lucide-react';
 import CommandPalette from './CommandPalette';
+import PullCordToggle from './PullCordToggle';
 
 export default function Navbar() {
   const pathname = usePathname();
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full backdrop-blur-xl bg-slate-950/75 border-b border-slate-800/80">
+      <header className="sticky top-0 z-40 w-full backdrop-blur-xl bg-slate-950/75 dark:bg-slate-950/75 border-b border-slate-800/80 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
           {/* Brand Identity */}
           <div className="flex items-center gap-6">
@@ -21,7 +22,7 @@ export default function Navbar() {
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="font-bold text-base tracking-tight text-white">LocalForge</span>
+                  <span className="font-bold text-base tracking-tight text-white dark:text-white">LocalForge</span>
                   <span className="text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-indigo-500/15 text-indigo-300 border border-indigo-500/30">
                     v1.0
                   </span>
@@ -34,7 +35,6 @@ export default function Navbar() {
           {/* Center Cmd+K Search Trigger */}
           <button
             onClick={() => {
-              // Dispatch synthetic keydown event to open palette
               window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }));
             }}
             className="hidden md:flex items-center gap-3 px-4 py-2 rounded-xl bg-slate-900/90 hover:bg-slate-800/80 border border-slate-800 text-xs text-slate-400 hover:text-slate-200 transition-all shadow-inner w-72 justify-between"
@@ -46,11 +46,11 @@ export default function Navbar() {
           </button>
 
           {/* Right Status Pill & GitHub CTA */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 pr-12 sm:pr-20">
             <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-500/25 text-emerald-300 text-xs">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Offline Sandbox Active</span>
+              <span>Offline Sandbox</span>
             </div>
 
             <a
@@ -65,6 +65,9 @@ export default function Navbar() {
             </a>
           </div>
         </div>
+
+        {/* Hanging Pull-Cord Switcher anchored at top right */}
+        <PullCordToggle />
       </header>
       <CommandPalette />
     </>

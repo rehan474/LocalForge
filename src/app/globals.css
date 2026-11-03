@@ -1,7 +1,24 @@
 @import "tailwindcss";
 
 @layer base {
-  body {
+  :root {
+    --bg-main: #030712;
+    --text-main: #f8fafc;
+  }
+  
+  html.light {
+    --bg-main: #f8fafc;
+    --text-main: #0f172a;
+    background-color: #f8fafc;
+    color: #0f172a;
+    background-image: 
+      radial-gradient(at 50% 0%, rgba(99, 102, 241, 0.08) 0px, transparent 55%),
+      radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+    background-size: 100% 100%, 24px 24px;
+    background-attachment: fixed;
+  }
+
+  html.dark, html:not(.light) {
     background-color: #030712;
     color: #f8fafc;
     background-image: 
@@ -17,12 +34,12 @@
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #090d16;
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: rgba(100, 116, 139, 0.3);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: rgba(100, 116, 139, 0.5);
 }
