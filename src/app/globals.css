@@ -1,12 +1,7 @@
 @import "tailwindcss";
 
 @layer base {
-  :root {
-    --bg-main: #030712;
-    --text-main: #f8fafc;
-  }
-  
-  html.light {
+  html.light, html.light body {
     background-color: #f8fafc !important;
     color: #0f172a !important;
     background-image: 
@@ -16,7 +11,7 @@
     background-attachment: fixed;
   }
 
-  html.dark, html:not(.light) {
+  html.dark, html.dark body, html:not(.light) {
     background-color: #030712 !important;
     color: #f8fafc !important;
     background-image: 

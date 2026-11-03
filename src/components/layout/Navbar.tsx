@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Hammer, Github, ShieldCheck, Sparkles, Command, Menu, X } from 'lucide-react';
 import CommandPalette from './CommandPalette';
-import PullCordToggle from './PullCordToggle';
+import LaptopThemeSwitch from './LaptopThemeSwitch';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -13,7 +13,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full backdrop-blur-xl bg-slate-950/80 dark:bg-slate-950/80 bg-white/80 border-b border-slate-800/80 dark:border-slate-800/80 border-slate-200">
+      <header className="sticky top-0 z-40 w-full backdrop-blur-xl bg-slate-950/80 dark:bg-slate-950/80 bg-white/80 border-b border-slate-800/80 dark:border-slate-800/80 border-slate-200 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
           {/* Brand Identity */}
           <div className="flex items-center gap-4">
@@ -50,7 +50,7 @@ export default function Navbar() {
               <span>Offline Sandbox</span>
             </div>
 
-            <PullCordToggle />
+            <LaptopThemeSwitch />
 
             <a
               href="https://github.com/rehan474/LocalForge"
@@ -74,7 +74,7 @@ export default function Navbar() {
 
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden absolute top-16 left-0 w-full bg-slate-950 border-b border-slate-800 p-4 space-y-3 shadow-2xl animate-fade-in">
+          <div className="md:hidden absolute top-16 left-0 w-full bg-slate-950 dark:bg-slate-950 bg-white border-b border-slate-800 p-4 space-y-3 shadow-2xl animate-fade-in">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
