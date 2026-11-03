@@ -12,15 +12,9 @@ export const TOOL_REGISTRY: Record<string, ToolDefinition> = {
       title: 'Free Online JSON Formatter, Validator & Beautifier (100% Local)',
       description: 'Format, validate, and minify sensitive JSON data safely in your browser without external servers.',
       keywords: ['json formatter', 'json validator', 'beautify json'],
-      howItWorks: [
-        'Paste your raw or minified JSON string into the input editor.',
-        'Choose 2-space indentation, 4-space indentation, or compact minification.',
-        'Copy the validated JSON output immediately.'
-      ],
-      whyLocal: 'Cloud JSON formatters often log requests on backend servers, risking exposure of API keys and tokens. LocalForge executes strictly in browser memory.',
-      faqs: [
-        { question: 'Is my JSON data sent to any server?', answer: 'Never. All parsing happens locally via your browser V8 JavaScript engine.' }
-      ]
+      howItWorks: ['Paste your raw or minified JSON string into the input editor.', 'Choose indentation and copy output.'],
+      whyLocal: 'Cloud JSON formatters often log requests on backend servers. LocalForge executes strictly in browser memory.',
+      faqs: [{ question: 'Is my JSON data sent to any server?', answer: 'Never. All parsing happens locally via your browser.' }]
     }
   },
   'image-compressor': {
@@ -33,17 +27,11 @@ export const TOOL_REGISTRY: Record<string, ToolDefinition> = {
     runsInWorker: true,
     seo: {
       title: 'Private Image Compressor - Shrink JPG, PNG & WebP in Browser',
-      description: 'Compress images up to 80% without losing quality. Zero server uploads—powered by client-side Web Workers.',
+      description: 'Compress images up to 80% without losing quality. Zero server uploads.',
       keywords: ['image compressor', 'compress png', 'compress jpg'],
-      howItWorks: [
-        'Select any PNG, JPG, or WebP image from your device.',
-        'A dedicated background Web Worker compresses the image without freezing your UI.',
-        'Download the optimized file immediately.'
-      ],
-      whyLocal: 'Uploading personal or client images to third-party servers risks privacy leaks. LocalForge compresses images inside a background Web Worker thread.',
-      faqs: [
-        { question: 'Does this work offline?', answer: 'Yes. Once loaded, you can disconnect from the internet and compress unlimited photos.' }
-      ]
+      howItWorks: ['Select any PNG, JPG, or WebP image.', 'Background Web Worker compresses the file.', 'Download optimized output.'],
+      whyLocal: 'Uploading personal images to third-party servers risks privacy leaks. LocalForge compresses files inside a background Web Worker.',
+      faqs: [{ question: 'Does this work offline?', answer: 'Yes. Once loaded, you can disconnect from the internet.' }]
     }
   },
   'pdf-merger': {
@@ -56,84 +44,94 @@ export const TOOL_REGISTRY: Record<string, ToolDefinition> = {
     runsInWorker: true,
     seo: {
       title: 'Merge PDF Files Locally in Browser - 100% Private & Free',
-      description: 'Combine multiple sensitive PDFs (contracts, bank statements, IDs) directly in your browser.',
+      description: 'Combine multiple sensitive PDFs directly in your browser.',
       keywords: ['merge pdf', 'combine pdf', 'private pdf merger'],
-      howItWorks: [
-        'Select two or more PDF files from your device.',
-        'Review the document order in the merge queue.',
-        'Click Merge PDFs to generate and download your combined file.'
-      ],
-      whyLocal: 'Financial and legal PDFs should never be uploaded to unknown cloud servers. LocalForge merges PDF byte arrays strictly inside your browser.',
-      faqs: [
-        { question: 'Are there file limits?', answer: 'No daily limits or file count restrictions apply because your own device performs the merge.' }
-      ]
+      howItWorks: ['Select two or more PDF files.', 'Review queue order.', 'Click Merge PDFs to download.'],
+      whyLocal: 'Financial and legal PDFs should never be uploaded to unknown cloud servers.',
+      faqs: [{ question: 'Are there file limits?', answer: 'No daily limits apply because your device performs the merge.' }]
+    }
+  },
+  'pdf-to-word': {
+    slug: 'pdf-to-word',
+    name: 'PDF to Word Converter (.docx)',
+    shortDescription: 'Convert PDF documents into editable Microsoft Word (.docx) files securely in your browser.',
+    category: 'pdf',
+    iconName: 'FileStack',
+    isNew: true,
+    runsInWorker: false,
+    seo: {
+      title: 'Free PDF to Word Converter - 100% Client-Side .docx Export',
+      description: 'Convert PDF files to editable Word documents instantly without uploading sensitive files to cloud servers.',
+      keywords: ['pdf to word', 'convert pdf to docx', 'offline pdf converter'],
+      howItWorks: ['Upload your PDF document.', 'Browser extracts page streams and structures .docx markup.', 'Download your Word file.'],
+      whyLocal: 'Contracts and resumes converted on third-party cloud servers expose your confidential data.',
+      faqs: [{ question: 'Are files stored anywhere?', answer: 'No storage occurs; conversion happens purely in temporary RAM.' }]
+    }
+  },
+  'word-to-pdf': {
+    slug: 'word-to-pdf',
+    name: 'Word to PDF Converter',
+    shortDescription: 'Compile Microsoft Word (.docx) documents into clean, portable PDF files offline.',
+    category: 'pdf',
+    iconName: 'FileStack',
+    isNew: true,
+    runsInWorker: false,
+    seo: {
+      title: 'Word to PDF Converter - Secure In-Browser Compilation',
+      description: 'Transform .docx documents into formatted PDF files instantly without external cloud tools.',
+      keywords: ['word to pdf', 'docx to pdf converter', 'private word converter'],
+      howItWorks: ['Select your .docx file.', 'Browser compiles document into PDF byte streams.', 'Download your PDF immediately.'],
+      whyLocal: 'Keep your proprietary documents off remote backend conversion clusters.',
+      faqs: [{ question: 'Is formatting preserved?', answer: 'Standard text blocks and headers compile cleanly into client-side PDF.' }]
     }
   },
   'jwt-decoder': {
     slug: 'jwt-decoder',
     name: 'Offline JWT Debugger',
-    shortDescription: 'Decode and inspect JSON Web Tokens (Header, Payload & Expiration) without leaking production tokens.',
+    shortDescription: 'Decode and inspect JSON Web Tokens without leaking production tokens.',
     category: 'developer',
     iconName: 'KeyRound',
-    isNew: true,
+    isNew: false,
     runsInWorker: false,
     seo: {
-      title: 'Offline JWT Decoder & Inspector - Debug JSON Web Tokens Locally',
-      description: 'Inspect JWT headers, claims, and expiration timestamps 100% client-side without exposing bearer tokens.',
-      keywords: ['jwt decoder', 'jwt debugger', 'decode jwt offline'],
-      howItWorks: [
-        'Paste your encoded Bearer JWT string into the input box.',
-        'Instantly inspect the decoded JSON Header and Payload claims.',
-        'Verify token expiration status automatically.'
-      ],
-      whyLocal: 'Pasting production Bearer tokens into online debuggers can compromise active user sessions if logged. LocalForge decodes tokens strictly in local memory.',
-      faqs: [
-        { question: 'Is my JWT token safe?', answer: 'Yes. Not a single byte leaves your browser tab.' }
-      ]
+      title: 'Offline JWT Decoder & Inspector',
+      description: 'Inspect JWT headers and claims 100% client-side.',
+      keywords: ['jwt decoder', 'jwt debugger'],
+      howItWorks: ['Paste your Bearer JWT token.', 'Inspect decoded payload.'],
+      whyLocal: 'Prevents session hijacking from logging production bearer tokens on remote servers.',
+      faqs: [{ question: 'Is my token safe?', answer: 'Yes, nothing leaves your browser.' }]
     }
   },
   'base64-codec': {
     slug: 'base64-codec',
     name: 'UTF-8 Base64 Encoder / Decoder',
-    shortDescription: 'Convert strings to and from Base64 with full Unicode safety strictly in browser memory.',
+    shortDescription: 'Convert strings to and from Base64 with full Unicode safety.',
     category: 'developer',
     iconName: 'ArrowRightLeft',
     runsInWorker: false,
     seo: {
-      title: 'Online Base64 Encoder & Decoder (UTF-8 Safe, 100% Client-Side)',
-      description: 'Encode and decode Base64 strings safely inside your browser without server round-trips.',
-      keywords: ['base64 encode', 'base64 decode', 'utf8 base64'],
-      howItWorks: [
-        'Toggle between Encode (Text to Base64) and Decode (Base64 to Text).',
-        'Type or paste your string into the left editor.',
-        'Copy the converted output with one click.'
-      ],
-      whyLocal: 'Developers frequently encode API Basic Auth credentials and secrets. Local processing guarantees zero network interception.',
-      faqs: [
-        { question: 'Does it support emojis and non-ASCII characters?', answer: 'Yes, it uses UTF-8 safe byte encoding.' }
-      ]
+      title: 'Online Base64 Encoder & Decoder',
+      description: 'Encode and decode Base64 strings safely.',
+      keywords: ['base64 encode', 'base64 decode'],
+      howItWorks: ['Type or paste your string.', 'Copy output.'],
+      whyLocal: 'Zero network interception for credentials.',
+      faqs: [{ question: 'Does it support emojis?', answer: 'Yes, UTF-8 safe.' }]
     }
   },
   'crypto-generator': {
     slug: 'crypto-generator',
     name: 'WebCrypto Password & UUID Generator',
-    shortDescription: 'Generate hardware-seeded cryptographic passwords and UUID v4 identifiers via window.crypto.',
+    shortDescription: 'Generate hardware-seeded cryptographic passwords and UUID v4 identifiers.',
     category: 'developer',
     iconName: 'Shield',
     runsInWorker: false,
     seo: {
-      title: 'Cryptographic Password & UUID v4 Generator (WebCrypto API)',
-      description: 'Generate true high-entropy passwords and UUIDs locally using your browser WebCrypto CSPRNG.',
-      keywords: ['password generator', 'uuid generator', 'webcrypto password'],
-      howItWorks: [
-        'Select your desired password length (12 to 64 characters).',
-        'Click regenerate to pull fresh entropy from window.crypto.getRandomValues().',
-        'Copy your password or UUID v4 directly to your clipboard.'
-      ],
-      whyLocal: 'Passwords generated on remote servers travel over the network. Generating them via local WebCrypto ensures only your machine ever sees the entropy.',
-      faqs: [
-        { question: 'How is this different from Math.random()?', answer: 'It uses the OS-level Cryptographically Secure Pseudo-Random Number Generator (CSPRNG) via WebCrypto.' }
-      ]
+      title: 'Cryptographic Password & UUID v4 Generator',
+      description: 'Generate high-entropy passwords locally.',
+      keywords: ['password generator', 'uuid generator'],
+      howItWorks: ['Adjust length slider.', 'Copy secure output.'],
+      whyLocal: 'True CSPRNG entropy generated locally via window.crypto.',
+      faqs: [{ question: 'Is it secure?', answer: 'Uses OS-level hardware entropy.' }]
     }
   }
 };
