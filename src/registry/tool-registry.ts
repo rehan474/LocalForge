@@ -57,13 +57,13 @@ export const TOOL_REGISTRY: Record<string, ToolDefinition> = {
     shortDescription: 'Convert PDF documents into editable Microsoft Word (.docx) files securely in your browser.',
     category: 'pdf',
     iconName: 'FileStack',
-    isNew: true,
+    isNew: false,
     runsInWorker: false,
     seo: {
       title: 'Free PDF to Word Converter - 100% Client-Side .docx Export',
       description: 'Convert PDF files to editable Word documents instantly without uploading sensitive files to cloud servers.',
-      keywords: ['pdf to word', 'convert pdf to docx', 'offline pdf converter'],
-      howItWorks: ['Upload your PDF document.', 'Browser extracts page streams and structures .docx markup.', 'Download your Word file.'],
+      keywords: ['pdf to word', 'convert pdf to docx'],
+      howItWorks: ['Upload your PDF document.', 'Browser extracts page streams and structures .docx markup.'],
       whyLocal: 'Contracts and resumes converted on third-party cloud servers expose your confidential data.',
       faqs: [{ question: 'Are files stored anywhere?', answer: 'No storage occurs; conversion happens purely in temporary RAM.' }]
     }
@@ -74,15 +74,49 @@ export const TOOL_REGISTRY: Record<string, ToolDefinition> = {
     shortDescription: 'Compile Microsoft Word (.docx) documents into clean, portable PDF files offline.',
     category: 'pdf',
     iconName: 'FileStack',
-    isNew: true,
+    isNew: false,
     runsInWorker: false,
     seo: {
       title: 'Word to PDF Converter - Secure In-Browser Compilation',
       description: 'Transform .docx documents into formatted PDF files instantly without external cloud tools.',
-      keywords: ['word to pdf', 'docx to pdf converter', 'private word converter'],
-      howItWorks: ['Select your .docx file.', 'Browser compiles document into PDF byte streams.', 'Download your PDF immediately.'],
+      keywords: ['word to pdf', 'docx to pdf converter'],
+      howItWorks: ['Select your .docx file.', 'Browser compiles document into PDF byte streams.'],
       whyLocal: 'Keep your proprietary documents off remote backend conversion clusters.',
-      faqs: [{ question: 'Is formatting preserved?', answer: 'Standard text blocks and headers compile cleanly into client-side PDF.' }]
+      faqs: [{ question: 'Is formatting preserved?', answer: 'Standard text blocks compile cleanly into client-side PDF.' }]
+    }
+  },
+  'qr-generator': {
+    slug: 'qr-generator',
+    name: 'QR Code Studio',
+    shortDescription: 'Generate scannable QR codes for links, text, and WiFi and download them as high-res SVGs.',
+    category: 'media',
+    iconName: 'QrCode',
+    isNew: true,
+    runsInWorker: false,
+    seo: {
+      title: 'Free QR Code Generator - Download SVG & PNG QR Codes Locally',
+      description: 'Create custom QR codes instantly in your browser. Zero tracking, zero ads.',
+      keywords: ['qr code generator', 'create qr code', 'svg qr code'],
+      howItWorks: ['Enter your text or URL.', 'View real-time generated QR code.', 'Download SVG vector file instantly.'],
+      whyLocal: 'Online QR generators often track scan analytics and log URLs. LocalForge generates SVGs locally.',
+      faqs: [{ question: 'Can I use these QR codes commercially?', answer: 'Yes, all generated QR code vectors are 100% free for commercial use.' }]
+    }
+  },
+  'markdown-previewer': {
+    slug: 'markdown-previewer',
+    name: 'Markdown Live Previewer',
+    shortDescription: 'Write markdown and instantly preview compiled HTML with one-click copy export.',
+    category: 'developer',
+    iconName: 'FileText',
+    isNew: true,
+    runsInWorker: false,
+    seo: {
+      title: 'Online Markdown to HTML Previewer & Compiler',
+      description: 'Preview markdown notes and documentation locally in real time.',
+      keywords: ['markdown previewer', 'markdown to html', 'offline markdown editor'],
+      howItWorks: ['Type markdown syntax in the left pane.', 'View real-time compiled HTML output.'],
+      whyLocal: 'Keep your personal documentation and notes entirely private inside your browser tab.',
+      faqs: [{ question: 'Can I copy the HTML?', answer: 'Yes, use the One-Click Copy HTML button.' }]
     }
   },
   'jwt-decoder': {
@@ -108,6 +142,7 @@ export const TOOL_REGISTRY: Record<string, ToolDefinition> = {
     shortDescription: 'Convert strings to and from Base64 with full Unicode safety.',
     category: 'developer',
     iconName: 'ArrowRightLeft',
+    isNew: false,
     runsInWorker: false,
     seo: {
       title: 'Online Base64 Encoder & Decoder',
@@ -124,6 +159,7 @@ export const TOOL_REGISTRY: Record<string, ToolDefinition> = {
     shortDescription: 'Generate hardware-seeded cryptographic passwords and UUID v4 identifiers.',
     category: 'developer',
     iconName: 'Shield',
+    isNew: false,
     runsInWorker: false,
     seo: {
       title: 'Cryptographic Password & UUID v4 Generator',

@@ -9,6 +9,8 @@ import ImageCompressorView from '@/tools/image-compressor/ImageCompressorView';
 import PdfMergerView from '@/tools/pdf-merger/PdfMergerView';
 import PdfToWordView from '@/tools/pdf-to-word/PdfToWordView';
 import WordToPdfView from '@/tools/word-to-pdf/WordToPdfView';
+import QrGeneratorView from '@/tools/qr-generator/QrGeneratorView';
+import MarkdownPreviewerView from '@/tools/markdown-previewer/MarkdownPreviewerView';
 import JwtDecoderView from '@/tools/jwt-decoder/JwtDecoderView';
 import Base64CodecView from '@/tools/base64-codec/Base64CodecView';
 import CryptoGeneratorView from '@/tools/crypto-generator/CryptoGeneratorView';
@@ -37,6 +39,10 @@ export default async function ToolPage({ params }: { params: Promise<{ toolSlug:
         return <PdfToWordView />;
       case 'word-to-pdf':
         return <WordToPdfView />;
+      case 'qr-generator':
+        return <QrGeneratorView />;
+      case 'markdown-previewer':
+        return <MarkdownPreviewerView />;
       case 'jwt-decoder':
         return <JwtDecoderView />;
       case 'base64-codec':
