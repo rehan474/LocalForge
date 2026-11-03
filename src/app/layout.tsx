@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import FloatingBar from '@/components/layout/FloatingBar';
+import DynamicFavicon from '@/components/layout/DynamicFavicon';
 
 export const metadata: Metadata = {
   title: 'LocalForge | Zero-Server Privacy-First Developer & Media Utilities',
@@ -25,8 +27,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         )}
       </head>
       <body className="min-h-screen flex flex-col bg-slate-950 text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
+        <DynamicFavicon />
         <Navbar />
         <div className="flex-1">{children}</div>
+        <FloatingBar />
         <Footer />
       </body>
     </html>
