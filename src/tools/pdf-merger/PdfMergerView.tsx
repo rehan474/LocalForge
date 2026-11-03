@@ -29,22 +29,20 @@ export default function PdfMergerView() {
     }
   };
 
-  // Load built-in sample PDFs for instant testing
   const loadSamplePdfs = async () => {
     setMerging(true);
     try {
-      // Create two tiny sample PDFs on the fly using pdf-lib for instant demo
       const pdfDoc1 = await PDFDocument.create();
       const page1 = pdfDoc1.addPage();
       page1.drawText('LocalForge Sample Document A');
       const bytes1 = await pdfDoc1.save();
-      const file1 = new File([bytes1], 'LocalForge-Part-1.pdf', { type: 'application/pdf' });
+      const file1 = new File([bytes1 as unknown as BlobPart], 'LocalForge-Part-1.pdf', { type: 'application/pdf' });
 
       const pdfDoc2 = await PDFDocument.create();
       const page2 = pdfDoc2.addPage();
       page2.drawText('LocalForge Sample Document B');
       const bytes2 = await pdfDoc2.save();
-      const file2 = new File([bytes2], 'LocalForge-Part-2.pdf', { type: 'application/pdf' });
+      const file2 = new File([bytes2 as unknown as BlobPart], 'LocalForge-Part-2.pdf', { type: 'application/pdf' });
 
       setFiles([file1, file2]);
       setMergedUrl(null);
@@ -67,7 +65,7 @@ export default function PdfMergerView() {
         copiedPages.forEach((page) => mergedPdf.addPage(page));
       }
       const mergedBytes = await mergedPdf.save();
-      const blob = new Blob([mergedBytes as BlobPart], { type: 'application/pdf' });
+      const blob = new Blob([mergedBytes as unknown as BlobPart], { type: 'application/pdf' });
       setMergedUrl(URL.createObjectURL(blob));
     } catch (err) {
       console.error(err);
@@ -177,7 +175,7 @@ export default function PdfMergerView() {
               <a
                 href={mergedUrl}
                 download="localforge-merged-document.pdf"
-                className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold flex items-center gap-2 shadow-lg shadow-emerald-600/20 transition-all animate-fade-in"
+                className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold flex items-center gap-2 shadow-lg shadow-emerald-600/20 transition-all"
               >
                 <CheckCircle2 className="w-4 h-4" /> Download Merged PDF
               </a>

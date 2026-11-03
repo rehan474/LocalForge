@@ -1,10 +1,9 @@
-'App Use Client'
 'use client';
 
 import React, { useState, useRef } from 'react';
 import { PDFDocument } from 'pdf-lib';
 import JSZip from 'jszip';
-import { FileText, Upload, Download, Loader2, Sparkles, CheckCircle2 } from 'lucide-react';
+import { FileText, Upload, Download, Loader2, Sparkles } from 'lucide-react';
 
 export default function PdfToWordView() {
   const [file, setFile] = useState<File | null>(null);
@@ -24,23 +23,18 @@ export default function PdfToWordView() {
       const count = pdfDoc.getPageCount();
       setPageCount(count);
 
-      // Construct a valid Microsoft Word .docx archive structure in-memory using JSZip
-      // A .docx file is a zip package containing XML document markup
       const zip = new JSZip();
 
-      // [Content_Types].xml
       zip.file(
         '[Content_Types].xml',
         '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>'
       );
 
-      // _rels/.rels
       zip.folder('_rels')?.file(
         '.rels',
         '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>'
       );
 
-      // word/document.xml with extracted metadata note
       const documentXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
         <w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
           <w:body>
@@ -67,7 +61,7 @@ export default function PdfToWordView() {
     const page = pdfDoc.addPage();
     page.drawText('LocalForge Sample PDF Document for Word Conversion');
     const bytes = await pdfDoc.save();
-    const sampleFile = new File([bytes], 'sample-document.pdf', { type: 'application/pdf' });
+    const sampleFile = new File([bytes as unknown as BlobPart], 'sample-document.pdf', { type: 'application/pdf' });
     await processPdf(sampleFile);
   };
 
